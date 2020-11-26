@@ -7,7 +7,7 @@
     <script src="angular.min.js"></script>
     <link rel="stylesheet" href="trabajoFinal.css">
 </head>
-<body>      
+<body class="fondo1">      
     <section ng-controller="controlador">
         <div class="paso">
             <h2>Elija una especie</h2>
@@ -30,7 +30,6 @@
     </section>
 
     <script> 
-        alert("Un Zoólogo pretende determinar el porcentaje de animales que hay en las siguientes tres categorías de edades: de 1 a 2 años, de más de 2 años y menos de 4 y de 4 o más años. El zoológico todavía no está seguro del animal que va a estudiar. Si se decide por elefantes solo tomará una muestra de 20 de ellos; si se decide por las jirafas, tomará 15 muestras, y si son chimpancés tomará 40");
         var controladorApp = angular.module('zoologico',[]);
         controladorApp.controller("controlador", function($scope){
             $scope.calcular=function(){
@@ -60,6 +59,7 @@
                 }
             }
         })
+        alert("Un Zoólogo pretende determinar el porcentaje de animales que hay en las siguientes tres categorías de edades: de 1 a 2 años, de más de 2 años y menos de 4 y de 4 o más años. El zoológico todavía no está seguro del animal que va a estudiar. Si se decide por elefantes solo tomará una muestra de 20 de ellos; si se decide por las jirafas, tomará 15 muestras, y si son chimpancés tomará 40");
     </script>
 </body>
 </html>

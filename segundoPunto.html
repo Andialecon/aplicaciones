@@ -7,7 +7,7 @@
     <script src="angular.min.js"></script>
     <link rel="stylesheet" href="trabajoFinal.css">
 </head>
-<body>      
+<body class="fondo2">      
     <section ng-controller="controlador">
         <div class="paso">
             <h2>Calculadora de Nómina</h2> 
@@ -53,7 +53,7 @@
     </section>
 
     <script> 
-        // alert("Determinar la cantidad de dinero total que recibirá un trabajador por concepto de su pago normal (48 horas semanales) y de las horas extras trabajadas en una empresa, sabiendo que cuando las horas de trabajo exceden de 48, el resto se consideran horas extras y que estas se pagan al doble de una hora normal cuando no exceden de 8; si las horas extras exceden de 8 se pagan las primeras 8 al doble de lo que se pagan las horas normales y el resto al triple.");
+        alert("Determinar la cantidad de dinero total que recibirá un trabajador por concepto de su pago normal (48 horas semanales) y de las horas extras trabajadas en una empresa, sabiendo que cuando las horas de trabajo exceden de 48, el resto se consideran horas extras y que estas se pagan al doble de una hora normal cuando no exceden de 8; si las horas extras exceden de 8 se pagan las primeras 8 al doble de lo que se pagan las horas normales y el resto al triple.");
         var controladorApp = angular.module('segundoPunto',[]);
         controladorApp.controller("controlador", function($scope){
             $scope.generarNomina=function(){

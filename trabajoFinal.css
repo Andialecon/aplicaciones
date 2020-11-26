@@ -51,9 +51,13 @@ body{
     justify-content:space-around;
 }
 
-body{
+.fondo1{
+    width: auto;
+    background-image: url(./chimpance.jpg);
+    background-size: cover;
+}
+.fondo2{
     width: auto;
     background-image: url(./empresa.jpg);
-    /* background-image: url(./chimpance.jpg); */
     background-size: cover;
 }
