@@ -1,0 +1,59 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    margin: 5%;
+    font-family: cursive;
+    text-align: center;
+}
+
+.paso{
+    max-width:60%;
+    text-align: center;
+    margin-top: 2%;
+    padding: 0 2% 2% 2%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color:rgba(223, 230, 233,0.7);
+    border:solid black 1px;
+    border-radius: 15px;
+}
+
+.categoria{
+    background-color: white;
+    width: 20%;
+    height: 200px;
+    display:inline-block;
+    margin: 10px;
+    border-radius: 10px;
+}
+
+.hd-categoria{
+    background-color: indigo;
+    color: white;
+    border-radius: 10px 10px 0 0;
+    font-size: larger;
+    font-weight: bold;
+    margin-bottom: 15%;
+    height: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.promedio{
+    font-size: 40px;
+}
+
+.nomina{
+    display: flex;
+    justify-content:space-around;
+}
+
+body{
+    width: auto;
+    background-image: url(./empresa.jpg);
+    /* background-image: url(./chimpance.jpg); */
+    background-size: cover;
+}

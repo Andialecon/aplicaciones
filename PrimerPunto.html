@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html ng-app="zoologico">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TrabajoFinal</title>
+    <script src="angular.min.js"></script>
+    <link rel="stylesheet" href="trabajoFinal.css">
+</head>
+<body>      
+    <section ng-controller="controlador">
+        <div class="paso">
+            <h2>Elija una especie</h2>
+            <select name="categorias" id="categorias" ng-model="animales">
+                <option value="elefantes">Elefantes</option>
+                <option value="jirafas">Jirafas</option>
+                <option value="chimpances">Chimpancés</option>
+            </select>
+            <button ng-click="calcular()">promediar</button> 
+        </div>
+       
+        <div class="paso">
+          <h2>Resultados</h2>
+            Se tomaron {{numMuestras}} muestras que arrojaron los siguientes porcentajes: <br><br>
+            <div class="categoria"> <div class="hd-categoria">Categoria Uno</div> (1 a 2 años) <div class="promedio">{{promedio1}}%</div> de los {{animales}}</div>  
+            <div class="categoria"><div class="hd-categoria">Categoria Dos</div> (3 a 4 años) <div class="promedio">{{promedio2}}%</div> de los {{animales}}</div>
+            <div class="categoria"><div class="hd-categoria">Categoria Tres</div> (más de 4 años) <div class="promedio">{{promedio3}}%</div> de los {{animales}}</div>
+        </div>
+        
+    </section>
+
+    <script> 
+        alert("Un Zoólogo pretende determinar el porcentaje de animales que hay en las siguientes tres categorías de edades: de 1 a 2 años, de más de 2 años y menos de 4 y de 4 o más años. El zoológico todavía no está seguro del animal que va a estudiar. Si se decide por elefantes solo tomará una muestra de 20 de ellos; si se decide por las jirafas, tomará 15 muestras, y si son chimpancés tomará 40");
+        var controladorApp = angular.module('zoologico',[]);
+        controladorApp.controller("controlador", function($scope){
+            $scope.calcular=function(){
+                switch($scope.animales){
+                    case "elefantes": $scope.numMuestras=20;
+                    break;
+                    case "jirafas": $scope.numMuestras=15;
+                    break;
+                    case "chimpances": $scope.numMuestras=40;
+                    break;
+                }
+                $scope.categoria1=0;
+                $scope.categoria2=0;
+                $scope.categoria3=0;
+                for(var i=0;i<$scope.numMuestras;i++){ 
+                    var edad=parseInt(Math.random()*18);
+                    if (edad<3){
+                        $scope.categoria1=$scope.categoria1+1;
+                        $scope.promedio1=parseInt($scope.categoria1*100/$scope.numMuestras);
+                    }else if (edad<4){
+                        $scope.categoria2=$scope.categoria2+1;
+                        $scope.promedio2=parseInt($scope.categoria2*100/$scope.numMuestras);
+                    }else{
+                        $scope.categoria3=$scope.categoria3+1;
+                        $scope.promedio3=parseInt($scope.categoria3*100/$scope.numMuestras);
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>

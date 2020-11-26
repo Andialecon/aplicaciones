@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html ng-app="segundoPunto">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TrabajoFinal</title>
+    <script src="angular.min.js"></script>
+    <link rel="stylesheet" href="trabajoFinal.css">
+</head>
+<body>      
+    <section ng-controller="controlador">
+        <div class="paso">
+            <h2>Calculadora de Nómina</h2> 
+            <h4>Empleado</h4> <input type="text"  size="10" placeholder="Nombre" ng-model="nombre"> <br>
+            <h4>Valor por Hora: </h4> $<input type="text" size="2" placeholder="4.500" ng-model="valor_hora"> <br>
+
+            <h4>¿Cuantas horas trabajó?</h4><input type="text" size="1" placeholder="48" ng-model="num_horas"> <br> <br>
+            
+            <button ng-click="generarNomina()">Generar Nómina</button> 
+        </div>
+       
+        <div class="paso">
+            <h2>NÓMINA</h2>
+            Señor <strong>{{nombre |uppercase}}</strong> con base a la información suministrada: {{num_horas}} horas trabajadas por valor basico de ${{valor_hora}}, el pago por sus servicios este mes será por: <br><br>
+            
+            <div class="nomina">
+                <div class="factura">
+                    <table border="1">
+                        <tr>
+                            <th>CONCEPTO</th><th>VALOR/H</th><th>#</th><th>SUBTOTAL</th>
+                        </tr>
+                        <tr>
+                            <td>Horas básicas</td><td>${{valor_hora}}</td><td>{{num_horas_nor}}</td><td>${{total_normal}}</td>
+                        </tr>
+                        <tr>
+                            <td>Horas extras</td><td>${{(valor_hora * 2)}}</td><td>{{num_horas_ext}}</td><td>${{total_ext}}</td>
+                        </tr>
+                        <tr>
+                            <td>Hr.ext + bono</td><td>${{(valor_hora *3)}}</td><td>{{num_horas_bon}}</td><td>${{total_bon}}</td>
+                        </tr>
+                        <tr>
+                            <td></td><th>TOTAL</th><th>{{num_horas_nor + num_horas_ext + num_horas_bon}}</th><th>${{valor_total}}</th>
+                        </tr>
+                    </table>
+                </div>
+                <div class="anotacion">
+                    <h2>Valor recibido</h2>
+                    <p>${{valor_total}}</p>
+                </div>
+            </div>          
+        </div>
+        
+    </section>
+
+    <script> 
+        // alert("Determinar la cantidad de dinero total que recibirá un trabajador por concepto de su pago normal (48 horas semanales) y de las horas extras trabajadas en una empresa, sabiendo que cuando las horas de trabajo exceden de 48, el resto se consideran horas extras y que estas se pagan al doble de una hora normal cuando no exceden de 8; si las horas extras exceden de 8 se pagan las primeras 8 al doble de lo que se pagan las horas normales y el resto al triple.");
+        var controladorApp = angular.module('segundoPunto',[]);
+        controladorApp.controller("controlador", function($scope){
+            $scope.generarNomina=function(){
+                $scope.num_horas_nor=0;
+                $scope.num_horas_ext=0;
+                $scope.num_horas_bon=0;
+                $scope.num_horas_bon=0;
+                $scope.total_normal=0;
+                $scope.total_ext=0;
+                $scope.total_bon=0;
+
+                if($scope.num_horas<49){
+                    $scope.num_horas_nor=$scope.num_horas;
+                }else if($scope.num_horas<57){
+                    $scope.num_horas_nor=48;
+                    $scope.num_horas_ext=$scope.num_horas-48;
+                }else{
+                    $scope.num_horas_nor=48;
+                    $scope.num_horas_ext=8;
+                    $scope.num_horas_bon=$scope.num_horas-48-8; 
+                }
+                $scope.total_normal=$scope.num_horas_nor*$scope.valor_hora;
+                $scope.total_ext=$scope.num_horas_ext*($scope.valor_hora*2);
+                $scope.total_bon=$scope.num_horas_bon*($scope.valor_hora*3);
+
+                $scope.valor_total=$scope.total_normal+ $scope.total_ext+$scope.total_bon;
+            }
+        })
+    </script>
+</body>
+</html>
